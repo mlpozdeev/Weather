@@ -1,7 +1,8 @@
-package com.example.wheatherapp
+package com.example.wheatherapp.presentation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.wheatherapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
