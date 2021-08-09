@@ -13,7 +13,9 @@ class CityViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.Vi
     private val cityNameTextView: TextView = view.findViewById(R.id.city_name_text_view)
 
     init {
-        onItemClicked(adapterPosition)
+        itemView.setOnClickListener {
+            onItemClicked(adapterPosition)
+        }
     }
 
     fun bind(item: City) {
