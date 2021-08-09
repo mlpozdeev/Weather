@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WheatherApp</string>
+
+    <string name="city_name">Ижевск</string>
 </resources>
