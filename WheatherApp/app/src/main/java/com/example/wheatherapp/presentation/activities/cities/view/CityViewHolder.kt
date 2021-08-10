@@ -1,4 +1,4 @@
-package com.example.wheatherapp.presentation.activities.cities
+package com.example.wheatherapp.presentation.activities.cities.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheatherapp.R
+import com.example.wheatherapp.presentation.activities.cities.model.City
 
 class CityViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
 

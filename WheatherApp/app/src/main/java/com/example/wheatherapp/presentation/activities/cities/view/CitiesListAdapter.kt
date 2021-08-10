@@ -1,7 +1,8 @@
-package com.example.wheatherapp.presentation.activities.cities
+package com.example.wheatherapp.presentation.activities.cities.view
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wheatherapp.presentation.activities.cities.model.City
 
 class CitiesListAdapter(
     private val cities: List<City>,

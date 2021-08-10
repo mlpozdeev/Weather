@@ -1,9 +1,10 @@
-package com.example.wheatherapp.presentation.activities.cities
+package com.example.wheatherapp.presentation.activities.cities.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.wheatherapp.R
 import com.example.wheatherapp.databinding.ActivityCitiesBinding
+import com.example.wheatherapp.presentation.activities.cities.model.City
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
