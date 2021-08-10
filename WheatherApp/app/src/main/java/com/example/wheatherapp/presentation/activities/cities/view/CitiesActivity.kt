@@ -1,10 +1,13 @@
 package com.example.wheatherapp.presentation.activities.cities.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.wheatherapp.R
 import com.example.wheatherapp.databinding.ActivityCitiesBinding
 import com.example.wheatherapp.presentation.activities.cities.model.City
+import com.example.wheatherapp.presentation.activities.weather.view.ARG_CITY_ID
+import com.example.wheatherapp.presentation.activities.weather.view.WeatherActivity
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
@@ -25,7 +28,9 @@ class CitiesActivity : AppCompatActivity() {
         )
 
         binding.citiesList.adapter = CitiesListAdapter(cities) { cityId ->
-
+            val intent = Intent(applicationContext, WeatherActivity::class.java)
+            intent.putExtra(ARG_CITY_ID, cityId)
+            startActivity(intent)
         }
     }
 }
