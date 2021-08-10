@@ -2,6 +2,7 @@ package com.example.weatherapp.presentation.activities.weather.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.WeatherApp
@@ -9,13 +10,12 @@ import com.example.weatherapp.data.network.service.WeatherService
 import com.example.weatherapp.data.repository.WeatherRepository
 import com.example.wheatherapp.databinding.ActivityWeatherBinding
 import com.example.weatherapp.presentation.activities.weather.viewmodel.WeatherViewModel
-
-const val ARG_CITY_ID = "cityId"
+import com.example.weatherapp.presentation.fragments.days_weather.DaysWeatherFragment
+import com.example.wheatherapp.R
 
 class WeatherActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWeatherBinding
-    private lateinit var viewModel: WeatherViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,26 +27,14 @@ class WeatherActivity : AppCompatActivity() {
             throw NoCityIdException("Не получен идентификатор города")
         }
 
-        val weatherService = (application as WeatherApp).retrofit.create(WeatherService::class.java)
-
-        viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return WeatherViewModel(cityId, WeatherRepository(weatherService)) as T
-            }
-        }).get(WeatherViewModel::class.java)
-
-        val adapter = WeatherListAdapter()
-        binding.weatherList.adapter = adapter
-
-        viewModel.weatherListLiveData.observe(this) {
-            adapter.submitList(it)
-            binding.weatherSwipeRefreshLayout.isRefreshing = false
-        }
-
-        binding.weatherSwipeRefreshLayout.setOnRefreshListener {
-            viewModel.refreshData()
-        }
+        supportFragmentManager.findFragmentById(R.id.days_weather_fragment)!!.arguments = bundleOf(
+            DaysWeatherFragment.ARG_CITY_ID to cityId
+        )
     }
 
     private class NoCityIdException(message: String) : Exception(message)
+
+    companion object {
+        const val ARG_CITY_ID = "cityId"
+    }
 }

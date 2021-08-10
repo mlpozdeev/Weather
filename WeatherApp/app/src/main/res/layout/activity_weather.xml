@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/weather_swipe_refresh_layout"
+    android:id="@+id/days_weather_fragment"
+    android:name="com.example.weatherapp.presentation.fragments.days_weather.DaysWeatherFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.weatherapp.presentation.activities.weather.view.WeatherActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weather_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/weather_item" />
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    tools:context="com.example.weatherapp.presentation.activities.weather.view.WeatherActivity"
+    tools:layout="@layout/fragment_days_weather" />
