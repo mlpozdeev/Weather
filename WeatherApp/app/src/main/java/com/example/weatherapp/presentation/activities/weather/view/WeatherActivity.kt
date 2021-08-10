@@ -3,14 +3,8 @@ package com.example.weatherapp.presentation.activities.weather.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.weatherapp.WeatherApp
-import com.example.weatherapp.data.network.service.WeatherService
-import com.example.weatherapp.data.repository.WeatherRepository
 import com.example.wheatherapp.databinding.ActivityWeatherBinding
-import com.example.weatherapp.presentation.activities.weather.viewmodel.WeatherViewModel
-import com.example.weatherapp.presentation.fragments.days_weather.DaysWeatherFragment
+import com.example.weatherapp.presentation.fragments.days_weather.view.DaysWeatherFragment
 import com.example.wheatherapp.R
 
 class WeatherActivity : AppCompatActivity() {

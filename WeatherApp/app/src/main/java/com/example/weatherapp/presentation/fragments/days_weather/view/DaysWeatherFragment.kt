@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.fragments.days_weather
+package com.example.weatherapp.presentation.fragments.days_weather.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.WeatherApp
 import com.example.weatherapp.data.network.service.WeatherService
 import com.example.weatherapp.data.repository.WeatherRepository
-import com.example.weatherapp.presentation.activities.weather.view.WeatherListAdapter
-import com.example.weatherapp.presentation.activities.weather.viewmodel.WeatherViewModel
+import com.example.weatherapp.presentation.fragments.days_weather.viewmodel.WeatherViewModel
 import com.example.wheatherapp.databinding.FragmentDaysWeatherBinding
 
 class DaysWeatherFragment : Fragment() {
@@ -52,7 +51,7 @@ class DaysWeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = WeatherListAdapter()
+        val adapter = DaysWeatherListAdapter()
         binding.weatherList.adapter = adapter
 
         viewModel.weatherListLiveData.observe(viewLifecycleOwner) {
