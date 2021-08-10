@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.weatherapp.WeatherApp
+import com.example.weatherapp.data.network.service.WeatherService
+import com.example.weatherapp.data.repository.WeatherRepository
 import com.example.wheatherapp.databinding.ActivityWeatherBinding
 import com.example.weatherapp.presentation.activities.weather.viewmodel.WeatherViewModel
 
@@ -24,17 +27,24 @@ class WeatherActivity : AppCompatActivity() {
             throw NoCityIdException("Не получен идентификатор города")
         }
 
-        val adapter = WeatherListAdapter()
-        binding.weatherList.adapter = adapter
+        val weatherService = (application as WeatherApp).retrofit.create(WeatherService::class.java)
 
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return WeatherViewModel(cityId) as T
+                return WeatherViewModel(cityId, WeatherRepository(weatherService)) as T
             }
         }).get(WeatherViewModel::class.java)
 
+        val adapter = WeatherListAdapter()
+        binding.weatherList.adapter = adapter
+
         viewModel.weatherListLiveData.observe(this) {
             adapter.submitList(it)
+            binding.weatherSwipeRefreshLayout.isRefreshing = false
+        }
+
+        binding.weatherSwipeRefreshLayout.setOnRefreshListener {
+            viewModel.refreshData()
         }
     }
 
