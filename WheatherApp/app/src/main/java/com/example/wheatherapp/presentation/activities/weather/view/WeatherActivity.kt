@@ -1,17 +1,18 @@
 package com.example.wheatherapp.presentation.activities.weather.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.wheatherapp.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.wheatherapp.databinding.ActivityWeatherBinding
-import com.example.wheatherapp.presentation.activities.weather.model.WeatherItem
-import java.lang.Exception
+import com.example.wheatherapp.presentation.activities.weather.viewmodel.WeatherViewModel
 
 const val ARG_CITY_ID = "cityId"
 
 class WeatherActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWeatherBinding
+    private lateinit var viewModel: WeatherViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +27,16 @@ class WeatherActivity : AppCompatActivity() {
         val adapter = WeatherListAdapter()
         binding.weatherList.adapter = adapter
 
-        adapter.submitList(listOf(
-            WeatherItem(
-                date = "25.04",
-                temperature = "+6"
-            )
-        ))
+        viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return WeatherViewModel(cityId) as T
+            }
+        }).get(WeatherViewModel::class.java)
+
+        viewModel.weatherListLiveData.observe(this) {
+            adapter.submitList(it)
+        }
     }
 
-    class NoCityIdException(message: String) : Exception(message)
+    private class NoCityIdException(message: String) : Exception(message)
 }
