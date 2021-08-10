@@ -25,7 +25,19 @@ class DaysWeatherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val cityId = arguments?.getInt(ARG_CITY_ID, -1) ?: -1
+        _binding = FragmentDaysWeatherBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val cityId = requireArguments().getInt(ARG_CITY_ID, -1)
         if (cityId == -1) {
             throw NoCityIdException("Не получен идентификатор города")
         }
@@ -38,18 +50,6 @@ class DaysWeatherFragment : Fragment() {
                 return WeatherViewModel(cityId, WeatherRepository(weatherService)) as T
             }
         }).get(WeatherViewModel::class.java)
-
-        _binding = FragmentDaysWeatherBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         val adapter = DaysWeatherListAdapter()
         binding.weatherList.adapter = adapter
