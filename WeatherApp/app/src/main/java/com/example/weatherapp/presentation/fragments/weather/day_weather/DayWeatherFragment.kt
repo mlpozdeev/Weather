@@ -37,6 +37,7 @@ class DayWeatherFragment : Fragment() {
         binding.apply {
             dateTextView.text = weather.date
             temperatureTextView.text = weather.temperature
+            pressureTextView.text = weather.pressure
         }
     }
 

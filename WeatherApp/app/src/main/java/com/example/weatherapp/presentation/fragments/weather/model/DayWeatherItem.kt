@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class DayWeatherItem(
     val date: String,
-    val temperature: String
+    val temperature: String,
+    val pressure: String
 ) : Parcelable

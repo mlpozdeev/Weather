@@ -34,7 +34,8 @@ class DaysWeatherViewModel(
                     val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.ROOT)
                     DayWeatherItem(
                         date = dateFormat.format(it.date),
-                        temperature = it.temperature
+                        temperature = it.temperature,
+                        pressure = it.pressure.toString()
                     )
                 }
         }
