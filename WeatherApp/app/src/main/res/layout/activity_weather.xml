@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/days_weather_fragment"
-    android:name="com.example.weatherapp.presentation.fragments.days_weather.view.DaysWeatherFragment"
+    android:name="com.example.weatherapp.presentation.fragments.weather.days_weather.view.DaysWeatherFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.weatherapp.presentation.activities.weather.view.WeatherActivity"

@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.fragments.days_weather.view
+package com.example.weatherapp.presentation.fragments.weather.days_weather.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheatherapp.R
-import com.example.weatherapp.presentation.fragments.days_weather.model.DayWeatherItem
+import com.example.weatherapp.presentation.fragments.weather.model.DayWeatherItem
 
 class DaysWeatherViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

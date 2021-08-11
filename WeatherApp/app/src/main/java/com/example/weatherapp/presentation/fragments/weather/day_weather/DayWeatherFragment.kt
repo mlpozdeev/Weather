@@ -1,11 +1,10 @@
-package com.example.weatherapp.presentation.fragments.day_weather
+package com.example.weatherapp.presentation.fragments.weather.day_weather
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.wheatherapp.R
 import com.example.wheatherapp.databinding.FragmentDayWeatherBinding
 
 class DayWeatherFragment : Fragment() {

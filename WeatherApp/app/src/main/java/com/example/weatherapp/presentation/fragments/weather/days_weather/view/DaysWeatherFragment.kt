@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.fragments.days_weather.view
+package com.example.weatherapp.presentation.fragments.weather.days_weather.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.WeatherApp
 import com.example.weatherapp.data.network.service.WeatherService
 import com.example.weatherapp.data.repository.WeatherRepository
-import com.example.weatherapp.presentation.fragments.days_weather.viewmodel.WeatherViewModel
+import com.example.weatherapp.presentation.fragments.weather.days_weather.viewmodel.WeatherViewModel
 import com.example.wheatherapp.databinding.FragmentDaysWeatherBinding
 
 class DaysWeatherFragment : Fragment() {

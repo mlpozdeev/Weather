@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.example.wheatherapp.databinding.ActivityWeatherBinding
-import com.example.weatherapp.presentation.fragments.days_weather.view.DaysWeatherFragment
+import com.example.weatherapp.presentation.fragments.weather.days_weather.view.DaysWeatherFragment
 import com.example.wheatherapp.R
 
 class WeatherActivity : AppCompatActivity() {

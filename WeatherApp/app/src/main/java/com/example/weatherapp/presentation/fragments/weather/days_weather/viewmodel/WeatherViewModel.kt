@@ -1,11 +1,11 @@
-package com.example.weatherapp.presentation.fragments.days_weather.viewmodel
+package com.example.weatherapp.presentation.fragments.weather.days_weather.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.data.repository.WeatherRepository
-import com.example.weatherapp.presentation.fragments.days_weather.model.DayWeatherItem
+import com.example.weatherapp.presentation.fragments.weather.model.DayWeatherItem
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*

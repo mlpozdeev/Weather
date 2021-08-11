@@ -1,9 +1,9 @@
-package com.example.weatherapp.presentation.fragments.days_weather.view
+package com.example.weatherapp.presentation.fragments.weather.days_weather.view
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.weatherapp.presentation.fragments.days_weather.model.DayWeatherItem
+import com.example.weatherapp.presentation.fragments.weather.model.DayWeatherItem
 
 class DaysWeatherListAdapter : ListAdapter<DayWeatherItem, DaysWeatherViewHolder>(ITEM_COMPARATOR) {
 
