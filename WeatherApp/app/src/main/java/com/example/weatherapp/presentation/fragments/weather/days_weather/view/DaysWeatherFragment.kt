@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapp.WeatherApp
 import com.example.weatherapp.data.network.service.WeatherService
 import com.example.weatherapp.data.repository.WeatherRepository
-import com.example.weatherapp.presentation.fragments.weather.days_weather.viewmodel.WeatherViewModel
+import com.example.weatherapp.presentation.fragments.weather.days_weather.viewmodel.DaysWeatherViewModel
 import com.example.wheatherapp.databinding.FragmentDaysWeatherBinding
 
 class DaysWeatherFragment : Fragment() {
@@ -19,7 +19,7 @@ class DaysWeatherFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: WeatherViewModel
+    private lateinit var viewModel: DaysWeatherViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,11 +47,13 @@ class DaysWeatherFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return WeatherViewModel(cityId, WeatherRepository(weatherService)) as T
+                return DaysWeatherViewModel(cityId, WeatherRepository(weatherService)) as T
             }
-        }).get(WeatherViewModel::class.java)
+        }).get(DaysWeatherViewModel::class.java)
 
-        val adapter = DaysWeatherListAdapter()
+        val adapter = DaysWeatherListAdapter { item ->
+            (requireActivity() as DaysFragmentCallback).onDaysFragmentCallback(item)
+        }
         binding.weatherList.adapter = adapter
 
         viewModel.weatherListLiveData.observe(viewLifecycleOwner) {

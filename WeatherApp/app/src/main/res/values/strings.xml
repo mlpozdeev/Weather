@@ -2,5 +2,7 @@
     <string name="app_name">WheatherApp</string>
 
     <string name="city_name">Ижевск</string>
-    <string name="date_label">Дата:</string>
+    <string name="date_label">Дата</string>
+    <string name="temperature_label">Температура</string>
+    <string name="pressure_label">Давление</string>
 </resources>

@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeatherViewModel(
+class DaysWeatherViewModel(
     private val cityId: Int,
     private val repository: WeatherRepository
 ) : ViewModel() {

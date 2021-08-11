@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.weatherapp.presentation.fragments.weather.model.DayWeatherItem
 import com.example.wheatherapp.databinding.FragmentDayWeatherBinding
 
 class DayWeatherFragment : Fragment() {
@@ -13,7 +14,7 @@ class DayWeatherFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var date: String
+    private lateinit var weather: DayWeatherItem
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,21 +32,24 @@ class DayWeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        date = requireArguments().getString(ARG_DATE)!!
+        weather = requireArguments().getParcelable(ARG_WEATHER_ITEM)!!
 
-        binding.dateTextView.text = date
+        binding.apply {
+            dateTextView.text = weather.date
+            temperatureTextView.text = weather.temperature
+        }
     }
 
     companion object {
 
-        private const val ARG_DATE = "date"
+        const val ARG_WEATHER_ITEM = "weather"
 
         fun newInstance(
-            date: String
+            weather: DayWeatherItem
         ): DayWeatherFragment {
             return DayWeatherFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_DATE, date)
+                    putParcelable(ARG_WEATHER_ITEM, weather)
                 }
             }
         }
